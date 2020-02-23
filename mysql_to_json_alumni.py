@@ -1,4 +1,5 @@
- #GOAL: Convert the world.sql into json, so it can be uploaded to Firebase
+ # pip install mysql.connector
+#GOAL: Convert the alumni.sql into json, so it can be uploaded to Firebase
 import os
 import mysql.connector
 import json
@@ -7,13 +8,13 @@ import re
 
 def select_from_table(table):
     '''Select all rows and column headers from specified table.
-    Currently assumes we are selecting from WORLD database
+    Currently assumes we are selecting from ALUMNI database
     mycursor - MySQL cursor object returned from connect_to_mysql()
     table - the table name to select from'''
     mydb = mysql.connector.connect(host="localhost",
                                    user="root",
-                                   password='testpassword123',
-                                   database='world',
+                                   password='JkhgYRFTYD7658',
+                                   database='alumni',
                                    auth_plugin='mysql_native_password'
                                   )
     mycursor = mydb.cursor()
@@ -36,6 +37,7 @@ def select_from_table(table):
         lo_rowlist.append(rowlist)
 
     return col_headers, lo_rowlist
+
 
 def header_data(col_headers, lo_rowlist):
     '''Simply add the col_headers to the lo_rowlist.'''
@@ -136,16 +138,16 @@ def build_inv_index(inv_index_full, list_of_rowdict, table, p_key):
                     else:
                         inv_index_full[word5].append({'TABLE': table, 'COLUMN': col, p_key: rowid5})
 
+
 def main():
     '''This is a driver function, that will run for each specified table in db. '''
-    tables = ['country', 'city', 'countrylanguage']
-    primary_keys = ['Code', 'ID', 'Language']
+    tables = ['person', 'lab', 'work']
+    primary_keys = ['person_id', 'lab_id', 'work_id']
     index = 'index'
-    root = 'https://inf551world.firebaseio.com/'
+    root = 'https://inf551Alumni.firebaseio.com/'
     suffix = '.json'
     inv_index_full = dict()
     for p_key, table in zip(primary_keys, tables):
-        #print(p_key)
         col_headers, lo_rowlist = select_from_table(table)
         header_d = header_data(col_headers, lo_rowlist)
         list_of_rowdict = listDict(header_d)
@@ -165,4 +167,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("Done. Check Firebase for uploaded data.")
+    #print("Done. Check Firebase for uploaded data.")
