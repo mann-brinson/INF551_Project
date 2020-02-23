@@ -1,5 +1,6 @@
- # pip install mysql.connector
 #GOAL: Convert the alumni.sql into json, so it can be uploaded to Firebase
+# pip install mysql.connector
+# pip install MySQL-connector-python
 import os
 import mysql.connector
 import json
@@ -167,4 +168,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    #print("Done. Check Firebase for uploaded data.")
+    print("Done. Check Firebase for uploaded data.")
