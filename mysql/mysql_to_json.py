@@ -141,7 +141,7 @@ def main():
     tables = ['country', 'city', 'countrylanguage']
     primary_keys = ['Code', 'ID', 'Language']
     index = 'index'
-    root = 'https://inf551world.firebaseio.com/'
+    root = 'https://inf551-world-project.firebaseio.com/'
     suffix = '.json'
     inv_index_full = dict()
     for p_key, table in zip(primary_keys, tables):
