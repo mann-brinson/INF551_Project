@@ -27,7 +27,7 @@ city['foreignkeys']=foreignkeys
 
 countrylanguage=dict()
 columns=['countrycode','language','isofficial','percentage']
-primarykeys=['countrycode','language']
+primarykeys=['language','countrycode']
 foreignkeys=['countrycode']
 countrylanguage['columns']=columns
 countrylanguage['primarykeys']=primarykeys
@@ -41,7 +41,7 @@ tables['countrylanguage']=countrylanguage
 world['tables']=tables
 
 # and lastly, add the firebase url
-world['firebaseurl']='https://inf551world.firebaseio.com'
+world['firebaseurl']='https://inf551-world-project.firebaseio.com'
 
 
 ####### second database is the kickstarter database ########
@@ -127,20 +127,19 @@ db_specs['kickstarter']=kickstarter
 db_specs['alumni']=alumni
 
 
-# how to retrieve items from the database dictionary
-#for db in db_specs:
-#	# retrieve the database names
-#	print(db)
-#	# retrieve the firebase urls:
-#	print(db_specs[db]['firebaseurl'])
-#	for tbl in db_specs[db]['tables']:
-#		# retrieve the table names:
-#		print(tbl)
-#		# retrieve the column names:
-#		print(db_specs[db]['tables'][tbl]['columns'])
-#		# retrieve the primary and foreign keys:
-#		print(db_specs[db]['tables'][tbl]['primarykeys'])
-#		print(db_specs[db]['tables'][tbl]['foreignkeys'])
-
+# # how to retrieve items from the database dictionary
+# tables=list()
+# columns=list()
+# prim_keys=list()
+# frgn_keys=list()
+# # retrieve specs from the db_specs file
+# for tbl in db_specs[database]['tables']:
+#     # retrieve the table names:
+#     tables.append(tbl)
+#     # retrieve the column names:
+#     columns.append(db_specs[database]['tables'][tbl]['columns'])
+#     # retrieve the primary and foreign keys:
+#     prim_keys.append(db_specs[database]['tables'][tbl]['primarykeys'])
+#     frgn_keys.append(db_specs[database]['tables'][tbl]['foreignkeys'])
 
 
