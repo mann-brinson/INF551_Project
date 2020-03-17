@@ -27,7 +27,7 @@ city['foreignkeys']=foreignkeys
 
 countrylanguage=dict()
 columns=['countrycode','language','isofficial','percentage']
-primarykeys=['language','countrycode']
+primarykeys=['id']
 foreignkeys=['countrycode']
 countrylanguage['columns']=columns
 countrylanguage['primarykeys']=primarykeys

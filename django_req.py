@@ -1,7 +1,7 @@
 
 # original database and keywords
-database='alumni'
-searchterm='nurse'
+database='world'
+searchterm='sweden'
 
 
 # when clicking a link
