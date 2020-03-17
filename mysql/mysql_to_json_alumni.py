@@ -14,7 +14,7 @@ def select_from_table(table):
     table - the table name to select from'''
     mydb = mysql.connector.connect(host="localhost",
                                    user="root",
-                                   password='JkhgYRFTYD7658',
+                                   password='testpassword123',
                                    database='alumni',
                                    auth_plugin='mysql_native_password'
                                   )
@@ -24,7 +24,7 @@ def select_from_table(table):
     col_headers = []
     sql = "desc " + table
     mycursor.execute(sql)
-    [col_headers.append(column[0]) for column in mycursor.fetchall()]
+    [col_headers.append(column[0].lower()) for column in mycursor.fetchall()]
 
     #Get the row contents into a list of lists
     lo_rowlist = []
@@ -133,11 +133,11 @@ def build_inv_index(inv_index_full, list_of_rowdict, table, p_key):
                     
                     # If the string value does not yet in inv_index_full, add it
                     if word5 not in inv_index_full:
-                        inv_index_full[word5] = [{'TABLE': table, 'COLUMN': col, p_key: rowid5}]
+                        inv_index_full[word5] = [{'table': table, 'column': col, p_key: rowid5}]
 
                     # If the word already exists in dictionary, append to that word value list 
                     else:
-                        inv_index_full[word5].append({'TABLE': table, 'COLUMN': col, p_key: rowid5})
+                        inv_index_full[word5].append({'table': table, 'column': col, p_key: rowid5})
 
 
 def main():
@@ -145,7 +145,7 @@ def main():
     tables = ['person', 'lab', 'work']
     primary_keys = ['person_id', 'lab_id', 'work_id']
     index = 'index'
-    root = 'https://inf551Alumni.firebaseio.com/'
+    root = 'https://inf551alumni.firebaseio.com/'
     suffix = '.json'
     inv_index_full = dict()
     for p_key, table in zip(primary_keys, tables):

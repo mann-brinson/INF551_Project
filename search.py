@@ -18,10 +18,10 @@ def search_firebase(database=django_req.database, searchterm=django_req.searchte
             # parse the search results
             for response in responses:
                 # assign the "child" for the firebase query, which is the table name 
-                child=response['TABLE']
+                child=response['table']
                 # the tables are ordered in a list (for each database), and can use the index to get the primary key (see db_specs.py)
                 # based on the table index, the primary key(s) is(are) assigned
-                tableindex=fb_settings.tables.index(response['TABLE'])
+                tableindex=fb_settings.tables.index(response['table'])
                 obs_prim_keys=fb_settings.prim_keys[tableindex]
                 # if there is one primary key: 
                 if len(obs_prim_keys)==1:
