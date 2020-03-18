@@ -79,7 +79,7 @@ def json_to_firebase(json_table, full_path):
 def build_inv_index(inv_index_full, list_of_rowdict, table, p_key):
     ''' Takes in the inv_index_full, and builds it with unique key-value pairs, per table.
     inv_index_full - inverted index that we are adding to
-    csv_listDict - list-of-dicts, where each dict is a row in table
+    list_of_rowdict - list-of-dicts, where each dict is a row in table
     table - the table name
     primary_key - the name of the unique id (Ex: 'Code', 'ID', 'Language')
     '''
@@ -87,7 +87,7 @@ def build_inv_index(inv_index_full, list_of_rowdict, table, p_key):
     
     for row in list_of_rowdict:
         rowid = row[p_key]
-        rowid2 = rowid.lower() #Convert to lowercase
+        rowid2 = rowid #Convert to lowercase
         rowid3 = re.sub(r'[~`-]', '', rowid2)
         rowid4 = re.sub(r'\\', '', rowid3)
         rowid5 = regex.sub('', rowid4)
@@ -130,11 +130,11 @@ def build_inv_index(inv_index_full, list_of_rowdict, table, p_key):
                     
                     # If the string value does not yet in inv_index_full, add it
                     if word5 not in inv_index_full:
-                        inv_index_full[word5] = [{'table': table.lower(), 'column': col.lower(), p_key.lower(): rowid5}]
+                        inv_index_full[word5] = [{'table': table.lower(), 'column': col.lower(), p_key.lower(): rowid6}]
 
                     # If the word already exists in dictionary, append to that word value list 
                     else:
-                        inv_index_full[word5].append({'table': table.lower(), 'column': col.lower(), p_key.lower(): rowid5})
+                        inv_index_full[word5].append({'table': table.lower(), 'column': col.lower(), p_key.lower(): rowid6})
 
 def main():
     '''This is a driver function, that will run for each specified table in db. '''
