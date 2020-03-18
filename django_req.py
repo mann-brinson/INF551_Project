@@ -1,7 +1,7 @@
 
 # original database and keywords
 database='world'
-searchterm='sweden'
+searchterm='united states'
 
 
 # when clicking a link

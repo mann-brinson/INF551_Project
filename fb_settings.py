@@ -8,12 +8,24 @@ from django_req import database # contains the user input
 firebaseurl=db_specs[database]['firebaseurl']
 
 # configure firebase for retrieval (remove when app in place)
+# config = {
+#   "apiKey": "apiKey",
+#   "authDomain": "projectId.firebaseapp.com",
+#   "databaseURL": firebaseurl,
+#   "storageBucket": "projectId.appspot.com"
+# }
+
 config = {
-  "apiKey": "apiKey",
-  "authDomain": "projectId.firebaseapp.com",
-  "databaseURL": firebaseurl,
-  "storageBucket": "projectId.appspot.com"
-}
+	'apiKey': "AIzaSyAle83H9wpH_bVHcDHLX2Hhw1ak_8PYhXg",
+    'authDomain': "inf551-world-project.firebaseapp.com",
+    'databaseURL': "https://inf551-world-project.firebaseio.com",
+    'projectId': "inf551-world-project",
+    'storageBucket': "inf551-world-project.appspot.com",
+    'messagingSenderId': "717516863005",
+    'appId': "1:717516863005:web:7d58f28fbdf2f9d93ab8f4",
+    'serviceAccount': ""
+
+  }
 
 firebase = pyrebase.initialize_app(config)
 # Get a reference to the database service
